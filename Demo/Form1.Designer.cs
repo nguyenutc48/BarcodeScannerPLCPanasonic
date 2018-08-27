@@ -184,7 +184,7 @@
             this.lblstatus.AutoSize = true;
             this.lblstatus.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblstatus.ForeColor = System.Drawing.Color.White;
-            this.lblstatus.Location = new System.Drawing.Point(183, 77);
+            this.lblstatus.Location = new System.Drawing.Point(200, 77);
             this.lblstatus.Name = "lblstatus";
             this.lblstatus.Size = new System.Drawing.Size(74, 29);
             this.lblstatus.TabIndex = 0;
