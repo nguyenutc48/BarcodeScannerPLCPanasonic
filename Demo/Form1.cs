@@ -437,5 +437,23 @@ namespace Demo
         {
             this.button1.BackColor = System.Drawing.Color.LightGray;
         }
+
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                this.Hide();
+                notifyIcon.Visible = true;
+                //notifyIcon.ShowBalloonTip(500);
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
+        }
     }
 }
