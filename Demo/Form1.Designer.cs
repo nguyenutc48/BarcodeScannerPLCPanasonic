@@ -43,6 +43,10 @@
             this.lblnumberofcode = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnreconnect = new System.Windows.Forms.Button();
+            this.btnplcstatus = new System.Windows.Forms.Button();
+            this.btnscannerstatus = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -112,6 +116,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.btnscannerstatus);
+            this.panel1.Controls.Add(this.btnplcstatus);
+            this.panel1.Controls.Add(this.btnreconnect);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -120,7 +128,7 @@
             this.panel1.Controls.Add(this.lblbarcodeshow);
             this.panel1.Location = new System.Drawing.Point(0, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(549, 134);
+            this.panel1.Size = new System.Drawing.Size(549, 187);
             this.panel1.TabIndex = 4;
             // 
             // label4
@@ -188,7 +196,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(549, 176);
+            this.panel2.Size = new System.Drawing.Size(549, 231);
             this.panel2.TabIndex = 5;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
@@ -197,14 +205,60 @@
             this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon.BalloonTipText = "Scanner2PlcPanasonic is working ...";
             this.notifyIcon.BalloonTipTitle = "Scanner2PlcPanasonic";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "notifyIcon";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // btnreconnect
+            // 
+            this.btnreconnect.Location = new System.Drawing.Point(18, 141);
+            this.btnreconnect.Name = "btnreconnect";
+            this.btnreconnect.Size = new System.Drawing.Size(113, 33);
+            this.btnreconnect.TabIndex = 1;
+            this.btnreconnect.Text = "Reconnect";
+            this.btnreconnect.UseVisualStyleBackColor = true;
+            this.btnreconnect.Click += new System.EventHandler(this.btnreconnect_Click);
+            // 
+            // btnplcstatus
+            // 
+            this.btnplcstatus.BackColor = System.Drawing.Color.Red;
+            this.btnplcstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnplcstatus.ForeColor = System.Drawing.Color.White;
+            this.btnplcstatus.Location = new System.Drawing.Point(358, 150);
+            this.btnplcstatus.Name = "btnplcstatus";
+            this.btnplcstatus.Size = new System.Drawing.Size(84, 25);
+            this.btnplcstatus.TabIndex = 2;
+            this.btnplcstatus.Text = "PLC";
+            this.btnplcstatus.UseVisualStyleBackColor = false;
+            // 
+            // btnscannerstatus
+            // 
+            this.btnscannerstatus.BackColor = System.Drawing.Color.Red;
+            this.btnscannerstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnscannerstatus.ForeColor = System.Drawing.Color.White;
+            this.btnscannerstatus.Location = new System.Drawing.Point(453, 150);
+            this.btnscannerstatus.Name = "btnscannerstatus";
+            this.btnscannerstatus.Size = new System.Drawing.Size(84, 25);
+            this.btnscannerstatus.TabIndex = 2;
+            this.btnscannerstatus.Text = "Scanner";
+            this.btnscannerstatus.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(196, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 24);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Connect status";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 176);
+            this.ClientSize = new System.Drawing.Size(549, 231);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -235,6 +289,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblstatus;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Button btnscannerstatus;
+        private System.Windows.Forms.Button btnplcstatus;
+        private System.Windows.Forms.Button btnreconnect;
+        private System.Windows.Forms.Label label5;
     }
 }
 

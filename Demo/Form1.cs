@@ -288,17 +288,26 @@ namespace Demo
         private void Instance_ScannerDetached(object sender, PnpEventArgs e)
         {
             _scannerAttached = false;
+            Invoke((ThreadStart)delegate
+            {
+                btnscannerstatus.BackColor = System.Drawing.Color.Red;
+            });
         }
 
         private void Instance_ScannerAttached(object sender, PnpEventArgs e)
         {
             _scannerAttached = true;
+            Invoke((ThreadStart)delegate
+            {
+                btnscannerstatus.BackColor = System.Drawing.Color.Green;
+            });
             ConnectScanners();
         }
 
         private void ConnectScanners()
         {
-            foreach (var scanner in BarcodeScannerManager.Instance.GetDevices())
+            var devices = BarcodeScannerManager.Instance.GetDevices();
+            foreach (var scanner in devices)
             {
                 scanner.SetHostMode(HostMode.USB_SNAPI_Imaging);
                 if (scanner.Info.UsbHostMode != HostMode.USB_SNAPI_Imaging)
@@ -356,10 +365,10 @@ namespace Demo
             _scannerAttached = false;
             BarcodeScannerManager.Instance.Open();            
             BarcodeScannerManager.Instance.RegisterForEvents(EventType.Barcode, EventType.Pnp, EventType.Image, EventType.Other, EventType.Rmd);
-            //var b = BarcodeScannerManager.Instance.RegisteredEvents;
+            var b = BarcodeScannerManager.Instance.RegisteredEvents;
             //BarcodeScannerManager.Instance.Keyboard.EnableEmulation = false;
-            //BarcodeScannerManager.Instance.ScannerAttached += Instance_ScannerAttached;
-            //BarcodeScannerManager.Instance.ScannerDetached += Instance_ScannerDetached;
+            BarcodeScannerManager.Instance.ScannerAttached += Instance_ScannerAttached;
+            BarcodeScannerManager.Instance.ScannerDetached += Instance_ScannerDetached;
             var a = BarcodeScannerManager.Instance.DriverVersion;
             ConnectScanners();
             BarcodeScannerManager.Instance.DataReceived += Instance_DataReceived;
@@ -443,9 +452,9 @@ namespace Demo
         {
             if (FormWindowState.Minimized == this.WindowState)
             {
-                this.Hide();
                 notifyIcon.Visible = true;
-                //notifyIcon.ShowBalloonTip(500);
+                notifyIcon.ShowBalloonTip(5000);
+                this.Hide();
             }
         }
 
@@ -454,6 +463,11 @@ namespace Demo
             this.Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon.Visible = false;
+        }
+
+        private void btnreconnect_Click(object sender, EventArgs e)
+        {
+            ConnectScanners();
         }
     }
 }
